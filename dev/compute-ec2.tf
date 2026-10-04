@@ -12,6 +12,7 @@ module "ec2_instances" {
       "public_ip" : "true",
       "volume_size" : "30",
       "volume_type" : "io1",
+      "volume_iops" : 100,
       "delete_on_termination" : "false",
       "disable_api_termination" : "false",
       "source_dest_check" : "false",

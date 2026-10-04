@@ -14,6 +14,7 @@ locals {
         ssh_key_pair            = srv.ssh_key_pair
         volume_size             = srv.volume_size
         volume_type             = srv.volume_type
+        volume_iops             = try(srv.volume_iops, null)
         public_ip               = srv.public_ip
         source_dest_check       = srv.source_dest_check
         user_data_template      = srv.user_data_template
@@ -77,8 +78,9 @@ module "default_instance" {
 
   enable_volume_tags = false
   root_block_device = {
-    volume_type           = each.value.volume_type
-    volume_size           = each.value.volume_size
+    type                  = each.value.volume_type
+    size                  = each.value.volume_size
+    iops                  = each.value.volume_iops
     delete_on_termination = each.value.delete_on_termination
   }
   tags = each.value.tags
