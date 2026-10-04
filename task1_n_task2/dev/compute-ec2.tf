@@ -14,7 +14,7 @@ module "ec2_instances" {
       "volume_type" : "io1",
       "volume_iops" : 100,
       "delete_on_termination" : "false",
-      "disable_api_termination" : "false",
+      "disable_api_termination" : "true",
       "source_dest_check" : "false",
       "user_data_template" : templatefile("${path.module}/user-data/AL2023_dev_instance_data.tpl", {}),
       "ssh_key_name" = "${local.module_name}-dev-app"
@@ -32,7 +32,7 @@ module "ec2_instances" {
       "volume_size" : "30",
       "volume_type" : "gp2",
       "delete_on_termination" : "true",
-      "disable_api_termination" : "true",
+      "disable_api_termination" : "false",
       "source_dest_check" : "false",
       "user_data_template" : templatefile("${path.module}/user-data/AL2023_dev_instance_data.tpl", {}),
       "ssh_key_name" = "${local.module_name}-dev-web"
@@ -50,7 +50,7 @@ module "ec2_instances" {
       "volume_size" : "30",
       "volume_type" : "gp2",
       "delete_on_termination" : "true",
-      "disable_api_termination" : "true",
+      "disable_api_termination" : "false",
       "source_dest_check" : "false",
       "user_data_template" : templatefile("${path.module}/user-data/AL2023_dev_instance_data.tpl", {}),
       "ssh_key_name" = "${local.module_name}-dev-bastion"

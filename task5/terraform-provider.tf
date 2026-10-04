@@ -6,3 +6,14 @@ provider "aws" {
     external_id  = "arrise_terraform_id"
   }
 }
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "registry.terraform.io/hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+
+  required_version = ">= 1.8"
+}
